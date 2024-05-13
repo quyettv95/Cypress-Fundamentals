@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // a = x * b + c
+        // b = x' * c + c'
+
+        let a = 1071;
+        let b = 462;
+        let ucln = null;
+        
+        while (true) {
+            sodu = a % b;
+            console.log(a + "=" + " x * " + b + "+" + sodu)
+            
+            if (sodu == 0) {
+                ucln = b;
+                break;
+            }
+
+            a = b;
+            b = sodu;
+        }
+        console.log(ucln);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="color" value=""> <br>
+    <button id="change_color_btn">Submit</button>
+    <script>
+
+
+        let button = document.querySelector('#change_color_btn');
+        button.addEventListener('click', () => {
+            let body = document.querySelector('body');
+            let color = document.querySelector('#color');
+            body.style.backgroundColor = color.value;
+            
+        })
+        
+    </script>
+</body>
+</html>

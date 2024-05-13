@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header, footer {
+            background: #2980b9;
+            color: #fff;
+            padding: 20px;
+        }
+        main {
+            display: flex;
+            min-height: 400px;
+        }
+
+        #main-content {
+            width: 66%;
+        }
+
+        #main-sidebar {
+            padding: 20px;
+            width: 34%;
+            border-left: solid 1px;
+        }
+    </style>
+   
+</head>
+<body>
+    <header id="main-header">
+        This is Header
+    </header>
+    <main>
+        <div id="main-content">
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+            <div class="article">
+                <div class="title">Lorem ipsum dolor sit amet.</div>
+                <div class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, quaerat exercitationem. Ea maxime dolor, aspernatur non facilis voluptatum omnis animi!</div>
+            </div>
+        </div>
+        <div id="main-sidebar">
+            <h2>Category</h2>
+            <ul>
+                <li>Cate 1</li>
+                <li>Cate 1</li>
+                <li>Cate 1</li>
+                <li>Cate 1</li>
+            </ul>
+
+            <button onclick="showMessage()">Click me</button>
+        </div>
+    </main>
+    <footer>
+        This is footer
+    </footer>
+    <script src="./script.js"></script>
+    <script>
+        let students = [];
+        students.push({
+            name: "Quyet",
+            age: 16,
+            grades: [10, 9, 8]
+        });
+        students.push({
+            name: "Nam",
+            age: 19,
+            grades: [8, 9, 8]
+        });
+        students.push({
+            name: "Viet Anh",
+            age: 16,
+            grades: [8, 9, 8]
+        });
+        students.push({
+            name: "Khanh",
+            age: 29,
+            grades: [8, 9, 8]
+        });
+        students.push({
+            name: "Hoai",
+            age: 18,
+            grades: [6, 9, 8]
+        });
+        students.push({
+            name: "An",
+            age: 20,
+            grades: [10, 10, 10, 7]
+        });
+
+        //console.log(students[students.length - 1].age)
+        //let lastStudent = students.pop();
+        //console.log(lastStudent.age);
+
+        function calculateAverageGrade(student) {
+            let sum = 0;
+            for (let grade of student.grades) {
+                sum += grade;
+            }
+            return sum / student.grades.length;
+         //   console.log(avg);
+        }
+
+    
+        students.sort((a, b) => {
+            if (b.age != a.age) {
+                return a.age - b.age;
+            } 
+
+            return calculateAverageGrade(a) - calculateAverageGrade(b);
+        });
+        for (let student of students) {
+            console.log(student)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let car = {
+            name: "Toyota",
+            model: "Camry",
+            startEngine: function () {
+                console.log(`${this.name} Engine start`);
+            },
+
+            systemCheck: function() {
+                console.log(`${this.name} System check`);
+            },
+
+            turnOnElectricSystem: function() {
+                console.log(`${this.name} Turn on electric System`);
+            },
+
+            start: function () {
+                this.startEngine();
+                this.checkSystem();
+                this.turnOnElectricSystem();
+            }
+        }
+
+        car.start();
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+
+            set fullname(fn) {
+                let nameSegment = fn.split(" ");
+                this.lastName = nameSegment.pop();
+                this.firstName = nameSegment.join(' ');
+            }
+
+            get fullname() {
+                return this.firstName + " " + this.lastName
+            }
+        }
+
+        class Student extends Person {
+            study () {
+                console.log(`${this.fullname} is studying`);
+            }
+        };
+
+        let person1 = new Student('Tran', 'Quyet');
+        person1.fullname = "Tran Van Quyet";
+        //console.log(person1);
+        console.log(person1.fullname);
+        person1.study();
+
+
+
+    </script>
+</body>
+</html>

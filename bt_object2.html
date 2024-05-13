@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Member {
+            constructor (id, name, email) {
+                this.id = id;
+                this.name = name;
+                this.email = email;
+            }
+            show() {
+                console.log(`Id:  ${this.id}`)
+                console.log(`Name:  ${this.name}`)
+                console.log(`Email:  ${this.email}`)
+            }
+        }
+
+        class Task {
+            constructor (id, title, description, dueDate, assignedTo, status) {
+                this.id = id;
+                this.title = title;
+                this.description = description;
+                this.dueDate = dueDate;
+                this.assignedTo = assignedTo;
+                this.status = status;
+            }
+
+            updateStatus (status) {
+                this.status = status;
+            }
+
+            assign (member) {
+                this.assignedTo = member;
+            }
+
+            show() {
+                console.log(`Id:  ${this.id}`)
+                console.log(`Title:  ${this.title}`)
+                console.log(`Description:  ${this.description}`)
+                console.log(`DueDate:  ${this.dueDate}`)
+                console.log(`AssignedTo:  ${this.assignedTo?.name}`)
+                console.log(`Status:  ${this.status}`)
+            }
+
+        }
+
+        class Project {
+            constructor(id, title, description, tasks = []) {
+                this.id = id;
+                this.title = title;
+                this.description = description;
+                this.tasks = tasks;
+            }
+
+            show() {
+                console.log(`Id:  ${this.id}`)
+                console.log(`Title:  ${this.title}`)
+                console.log(`Description:  ${this.description}`)
+                console.log("============= Công việc ===============")
+                console.log(`Tổng công việc ${this.tasks.length}`)
+
+                for (let task of this.tasks) {
+                    task.show();
+                    console.log("----------");
+                }
+            }
+
+            findTaskById(id) {
+                return this.tasks.find((task) => {
+                    return task.id == id;
+                })
+            }
+
+            removeTask(id) {
+                let finalTasks = [];
+                for (let task of this.tasks) {
+                    if (task.id != id) {
+                        finalTasks.push(task);
+                    }
+                }
+
+                this.tasks = finalTasks;
+            }
+
+            addTask(task) {
+                this.tasks.push(task);
+            }
+        }
+
+        class ProjectSoftware {
+            constructor (projects = [], members = []) {
+                this.projects = projects;
+                this.members = members;
+            }
+
+            findProjectById(id) {
+                return this.projects.find((project) => {
+                    return project.id == id;
+                })
+            }
+            findMemberById(id) {
+                return this.members.find((member) => {
+                    return member.id == id;
+                })
+            }
+            addProject (project) {
+                this.projects.push(project);
+            }
+
+            addMembers (member) {
+                this.members.push(member);
+            }
+            
+            assign (member, task) {
+                task.assign(member);
+            }
+        } 
+
+        /*let member1 = new Member(1, 'Quyet', 'quyettv@topcv.vn');
+        
+
+        topcvProject.addTask(new Task (1, 'Viết testcase cho tính năng login', 'Liệt kê các trường hợp có thể xảy ra đối với tính năng login (Validate, Login success, login fail)', '01/01/2025', member1, 'Todo'));
+        topcvProject.addTask(new Task (2, 'Frontend xây dựng giao diện', 'Cắt thiết kế sang html css', '01/01/2025', member1, 'Todo'));
+        topcvProject.addTask(new Task (3, 'Backend viết API', 'Viết API kiểm tra login', '01/01/2025', member1, 'Todo'));
+
+        topcvProject.show()
+        console.log('**********************')
+
+        topcvProject.findTaskById(1).updateStatus('Inprogress');
+        topcvProject.findTaskById(2).updateStatus('Inprogress');
+        topcvProject.findTaskById(2).updateStatus('Done');
+        topcvProject.findTaskById(3).updateStatus('Inprogress');
+        topcvProject.addTask(new Task (4, 'Fix lỗi giao diện', 'Viết API kiểm tra login', '01/01/2025', member1, 'Todo'));
+
+
+        topcvProject.show()
+        */
+
+
+        projectSoftware = new ProjectSoftware()
+
+        projectSoftware.addProject(new Project(1, "TopCV.vn", "Website tuyển dụng số 1 VN"));
+        projectSoftware.addProject(new Project(2, "Vieclam25", "Website tuyển dụng số 2 VN"));
+        
+        projectSoftware.addMembers(new Member(1, 'Quyet', 'quyettv@topcv.vn'))
+        const topcvProject = projectSoftware.findProjectById(1);
+        topcvProject.show();
+        console.log('**********************')
+
+        topcvProject.addTask(new Task (1, 'Viết testcase cho tính năng login', 'Liệt kê các trường hợp có thể xảy ra đối với tính năng login (Validate, Login success, login fail)', '01/01/2025', null, 'Todo'))
+        topcvProject.addTask(new Task (2, 'Backend', 'Liệt kê các trường hợp có thể xảy ra đối với tính năng login (Validate, Login success, login fail)', '01/01/2025', null, 'Todo'))
+        const task = topcvProject.findTaskById(2);
+        task.assign(projectSoftware.findMemberById(1))
+        task.updateStatus('done')
+
+        topcvProject.show();
+
+        
+        
+    </script>
+</body>
+</html>

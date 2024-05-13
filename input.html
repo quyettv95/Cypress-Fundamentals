@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Username</label>
+    <input type="text" id="username" value="quyettv@topcv.vn"> <br>
+    <label for="">Password</label>
+    <input type="text" id="password"> <br>
+    <button>Submit</button>
+    <script>
+        let username = document.getElementById('username');
+        let password = document.getElementById('password');
+
+        console.log()
+
+        let button = document.querySelector('button');
+        button.addEventListener('click', () => submit());
+
+        let submit = () => {
+            let txtUsername = username.value;
+            let txtPassword = password.value;
+
+            if (txtUsername == 'admin' && txtPassword == 'admin') {
+                alert("Login Success");
+            } else {
+                alert("Login Fail");
+
+            }
+        }
+        
+    </script>
+</body>
+</html>

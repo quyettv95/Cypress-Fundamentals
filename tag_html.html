@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>
+    <p class="a">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>
+    <div>
+        <p class="a">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At velit nulla consectetur molestias maiores vitae laboriosam eos nesciunt praesentium consequatur tempora recusandae ut non quis porro pariatur, corporis illum eum!</p>    
+    </div>
+    <script>
+        
+        let pTags = document.querySelectorAll('div p');
+        //pTags.innerText = "Hi";
+        for (let tag of pTags) {
+            tag.innerHTML = "<h1>Hello</h1>"
+        }
+
+        let aClass = document.querySelectorAll('.a');
+        let aaClass = document.getElementsByClassName('a');
+
+        for (let tag of aaClass) {
+            tag.style.color = "red";
+        }
+        /*
+
+        for (let i = 0; i < pTags.length; i++) {
+            pTags[i].innerText = "Hello2";
+        }
+        */
+
+
+    </script>
+</body>
+</html>

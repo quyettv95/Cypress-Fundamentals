@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="start">Start</button>
+    <div id="wrapper">
+        <div id="question"></div>
+        <ul>
+            <li class="answer" id="answer1"></li>
+            <li class="answer" id="answer2"></li>
+            <li class="answer" id="answer3"></li>
+            <li class="answer" id="answer4"></li>
+        </ul>
+    </div>
+    <script>
+        class Question {
+            constructor (question, anwsers, correctAnswer) {
+                this.question = question;
+                this.anwsers = anwsers;
+                this.correctAnswer = correctAnswer;
+            }
+        }
+
+
+        class WhoIsMillionaire {
+            static currentQuestionIndex = 0;
+            static questions = [
+                new Question(
+                    "Ai là người sáng lập Microsoft?",
+                    [
+                        "Steve Jobs",
+                        "Bill Gates",
+                        "Mark Zuckerberg",
+                        "Jeff Bezos"
+                    ],
+                    "Bill Gates"
+                ),
+                new Question(
+                    "Thành phố nào được gọi là \"Thành phố ánh sáng\"?",
+                    [
+                        "Paris",
+                        "New York",
+                        "Tokyo",
+                        "London"
+                    ],
+                    "Paris"
+                ),
+                new Question(
+                    "Einstein được vinh danh bằng giải Nobel trong lĩnh vực nào?",
+                    [
+                        "Hóa học",
+                        "Sinh học",
+                        "Vật lý",
+                        "Y học"
+                    ],
+                    "Vật lý"
+                ),
+                new Question(
+                    "Ai là tác giả của cuốn tiểu thuyết \"Những dấu chân trên cát\"?",
+                    [
+                        "Harper Lee",
+                        "J.K. Rowling",
+                        "Khaled Hosseini",
+                        "Agatha Christie"
+                    ],
+                    "Khaled Hosseini"
+                ),
+                new Question(
+                    "Đâu là tên của con thú không phải là loài động vật?",
+                    [
+                        "Ostrich",
+                        "Kangaroo",
+                        "Dolphin",
+                        "Komodo Dragon",
+                    ],
+                    "Dolphin"
+                ),
+                new Question(
+                    "\"Mona Lisa\" là bức tranh của họa sĩ nào?",
+                    [
+                        "Vincent van Gogh",
+                        "Pablo Picasso",
+                        "Leonardo da Vinci",
+                        "Michelangelo",
+                    ],
+                    "Leonardo da Vinci"
+                ),
+                new Question(
+                    "Biểu tượng toán học π tượng trưng cho gì?",
+                    [
+                        "E",
+                        "Pi",
+                        "Omega",
+                        "Sigma"
+                    ],
+                    "Pi"
+                ),
+                new Question(
+                    "Địa danh nào là thủ đô của Nhật Bản?",
+                    [
+                        "Osaka",
+                        "Kyoto",
+                        "Tokyo",
+                        "Nagoya"
+                    ],
+                    "Tokyo"
+                ),
+                new Question(
+                    "Trong hệ thống thời gian 24 giờ, \"AM\" và \"PM\" đại diện cho gì?",
+                    [
+                        "Anh sáng và mờ",
+                        "Buổi sáng và buổi tối",
+                        "Buổi chiều và buổi tối",
+                        "Buổi sáng và buổi trưa"
+                    ],
+                    "Buổi sáng và buổi tối"
+                ),
+                new Question(
+                    "Ngày nào được coi là ngày của Lễ Tạ ơn ở Mỹ?",
+                    [
+                        "Thứ Sáu cuối cùng của tháng Mười Một",
+                        "Ngày Lễ Tình Nhân",
+                        "Ngày 4 tháng 7",
+                        "Ngày Giáng Sinh"
+                    ],
+                    "Thứ Sáu cuối cùng của tháng Mười Một",
+                ),
+                new Question(
+                    "Ai là người đã phát minh ra đèn soi Edison?",
+                    [
+                        "Thomas Edison",
+                        "Nikola Tesla",
+                        "Alexander Graham Bell",
+                        "Henry Ford"
+                    ],
+                    "Thomas Edison"
+                ),
+                new Question(
+                    "Đâu là nguyên tố hóa học phổ biến nhất trên Trái Đất?",
+                    [
+                        "Hydrogen",
+                        "Oxygen",
+                        "Carbon",
+                        "Nitrogen",
+                    ],
+                    "Oxygen"
+                ),
+                new Question(
+                    "Ai là người sáng lập Facebook?",
+                    [
+                        "Steve Jobs",
+                        "Bill Gates",
+                        "Mark Zuckerberg",
+                        "Jeff Bezos"
+                    ],
+                    "Mark Zuckerberg"
+                ),
+                new Question(
+                    "Đâu là tên của loài cá nổi tiếng trong truyện cổ tích?",
+                    [
+                        "Nemo",
+                        "Dory",
+                        "Goldfish",
+                        "Ariel"
+                    ],
+                    "Nemo"
+                ),
+                new Question(
+                    "Ai là tác giả của cuốn \"Harry Potter\"?",
+                    [
+                        "J.R.R. Tolkien",
+                        "J.K. Rowling",
+                        "George R.R. Martin",
+                        "C.S. Lewis"
+                    ],
+                    "J.K. Rowling"
+                ),
+                new Question(
+                    "Trong tác phẩm của Shakespeare, ai là \"ông vua của tất cả các vua\"?",
+                    [
+                        "Macbeth",
+                        "Lear",
+                        "Richard III",
+                        "Henry V"
+                    ],
+                    "Lear"
+                ),
+                new Question(
+                    "Loại nước nào là nước lạnh nhất trên Trái Đất?",
+                    [
+                        "Nước biển",
+                        "Nước ngọt",
+                        "Nước lạnh",
+                        "Nước nước đá",
+                    ],
+                    "Nước nước đá"
+                ),
+                new Question(
+                    "\"The Great Gatsby\" là tác phẩm của nhà văn nào?",
+                    [
+                        "Ernest Hemingway",
+                        "F. Scott Fitzgerald",
+                        "John Steinbeck",
+                        "Virginia Woolf"
+                    ],
+                    "F. Scott Fitzgerald"
+                ),
+                new Question(
+                    "Đâu là đơn vị tiền tệ của Nhật Bản?",
+                    [
+                        "Yen",
+                        "Yuan",
+                        "Won",
+                        "Euro"
+                    ],
+                    "Yen"
+                ),
+                new Question(
+                    "Thành phố nào được gọi là \"Thành phố không bao giờ ngủ\"?",
+                    [
+                        "New York",
+                        "Las Vegas",
+                        "Tokyo",
+                        "Paris"
+                    ],
+                    "Las Vegas"
+                ),
+            ];
+            static run() {
+                let wrapper = document.getElementById('wrapper');
+                wrapper.style.display = 'block';
+                let background = new Audio('./sound/background.mp3');
+                background.play();
+                console.log("program is running");
+                WhoIsMillionaire.currentQuestionIndex ++;
+                console.log(WhoIsMillionaire.getCurrentQuestion());
+
+                WhoIsMillionaire.printCurrentQuestion();
+            }
+
+
+            static printCurrentQuestion() {
+                let currentQuestion = WhoIsMillionaire.getCurrentQuestion();
+                let question = document.getElementById('question');
+                question.innerText = currentQuestion.question;
+                let questionIndex = 1;
+                for (let answer of currentQuestion.anwsers) {
+                    let answerElement = document.getElementById('answer' + questionIndex++);
+                    answerElement.innerText = answer;
+                }
+            }
+
+            static getCurrentQuestion() {
+                return WhoIsMillionaire.questions[WhoIsMillionaire.currentQuestionIndex];
+            }
+
+            static nextQuestion() {
+                WhoIsMillionaire.currentQuestionIndex++;
+                WhoIsMillionaire.printCurrentQuestion();
+            }
+
+            static resetGame() {
+                alert("Bạn đã trả lời sai");
+                WhoIsMillionaire.currentQuestionIndex = 0;
+                WhoIsMillionaire.printCurrentQuestion();
+                //return WhoIsMillionaire.questions[WhoIsMillionaire.currentQuestionIndex];
+            }
+        }
+
+
+        let answers = document.querySelectorAll('.answer');
+        let correctSound = new Audio('./sound/correct.ogg');
+        let wrongSound = new Audio('./sound/wrong.ogg');
+        for (let answer of answers) {
+            answer.addEventListener('click', () => {
+                let userAns = answer.innerText;
+                if (userAns == WhoIsMillionaire.getCurrentQuestion().correctAnswer) {
+                    WhoIsMillionaire.nextQuestion();
+                    correctSound.play();
+                } else {
+                    WhoIsMillionaire.resetGame();
+                    wrongSound.play();
+                }
+            })
+        }
+
+        let btnStart = document.getElementById('start');
+        btnStart.addEventListener('click', () => {
+            WhoIsMillionaire.run()
+        })
+    </script>
+
+
+</body>
+</html>

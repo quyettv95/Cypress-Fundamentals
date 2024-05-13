@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #b38d8d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+div#itlearn_form {
+    width: 300px;
+    margin: 100px auto;
+    background: #2980b9;
+    color: #fff;
+    padding: 20px;
+}
+
+div#itlearn_form label {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.login_success {
+    display: none;
+    background: green;
+    color: #fff;
+}
+
+.error_message {
+    display: none;
+    color: red;
+}
+.login_fail {
+    display: none;
+    background-color: red;   
+    color: #fff;;
+}

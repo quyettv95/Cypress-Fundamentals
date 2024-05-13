@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Book {
+            constructor (title, author, price) {
+                this.title = title;
+                this.author = author;
+                this.price = price;
+            }
+        }
+
+        let books = [];
+
+        books.push(new Book('Truyen ma', 'Viet Anh', 10000));
+        books.push(new Book('Truyen ma', 'Viet Anh', 20000));
+        books.push(new Book('Truyen ma', 'Viet Anh', 40000));
+        books.push(new Book('Truyen ma', 'Viet Anh', 70000));
+        books.push(new Book('Truyen ma', 'Viet Anh', 100000));
+
+        let totalPrice = 0;
+        for (const book of books) {
+            totalPrice += book.price;
+        }
+
+        console.log(`Total Price: ${totalPrice}`);
+
+    </script>
+</body>
+</html>

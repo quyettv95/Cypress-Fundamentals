@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /*let loginPage = new LoginPage();
+        loginPage.visit();
+        loginPage.enterUsername('quyetvv@topcv.vn');
+        loginPage.enterPassword('admin@23232');
+        loginPage.submit();
+        */
+
+
+        class Helper {
+            static processStr(str) {
+                return str.trim();
+            }
+
+            static validateEmail (email) {
+                return email.includes('@');
+            }
+        }
+
+
+        class Student {
+            constructor (id, name, age, email) {
+                this.id = id;
+                this.name = this.processStr(name);
+                this.age = age;
+                this.email = email;
+            }
+
+            showInfo() {
+                console.log("Id :" + this.id);
+                console.log("Name :" + this.name);
+                console.log(`Age: ${this.age}`);
+                //console.log(`Email: ${this.email}`);
+            }
+        }
+
+        class Course {
+            constructor (id, name, code, instructor, totalLession, fee) {
+                this.id = id;
+                this.name = name;
+                this.code = code;
+                this.instructor = instructor;
+                this.totalLession = totalLession;
+                this.fee = fee;
+            }
+
+            showInfo() {
+                console.log(`Id: ${this.id}`);
+                console.log(`Name: ${this.name}`);
+                console.log(`Code: ${this.code}`);
+                console.log(`Instructor: ${this.instructor}`);
+                console.log(`TotalLession: ${this.totalLession}`);
+                console.log(`Fee: ${this.fee}`);
+            }
+        }
+
+        class CourseRegistration {
+            constructor (courseId, studentId, registerAt) {
+                this.courseId = courseId
+                this.studentId = studentId
+                this.registerAt = registerAt
+            }
+        }
+
+        class TrainingCenter {
+            constructor (students = [], courses = []) {
+                this.students = students;
+                this.courses = courses;
+                this.registrations = [];
+            }
+
+            findStudentById (id) {
+                return this.students.find((student) => {
+                    return student.id == id;
+                });
+
+                /*for (let student of this.students) {
+                    if (student.id == id) {
+                        return student;
+                    }
+                }*/
+            }
+            
+            findCourseById (id) {
+                return this.courses.find((course) => {
+                    return course.id == id;
+                });
+            }
+
+            addStudent (student) {
+                this.students.push(student);
+            }
+
+            addCourse (course) {
+                this.courses.push(course);
+            }
+            // đăng ký môn học
+            registerCourse (studentId, courseId, registerAt) {
+                this.registrations.push(new CourseRegistration(studentId, courseId, registerAt));
+            }
+
+            showDetailStudent(id) {
+                for (let student of this.students) {
+                    if (student.id == id) {
+                        student.showInfo();
+                        let studentRegistations = []
+                        for (let registration of this.registrations) {
+                            if (registration.studentId == id) {
+                                studentRegistations.push(registration)
+                            }
+                        }
+
+                        if (studentRegistations.length > 0) {
+                            for (let studentRegistation of studentRegistations) {
+                                let course = this.findCourseById(studentRegistation.courseId);
+                                console.log(`Đăng ký môn học ${course.name}`)
+                            }
+                        } else {
+                            console.log("Sinh viên không đăng ký môn học nào");
+                        }
+                        return;
+                    }
+                }
+
+                console.log('Không tìm thấy thông tin sinh viên')
+            }
+
+            showDetailCourse(id) {
+                let course = this.findCourseById(1);
+                course.showInfo();
+                let regStudents = [];
+                for (let registration of this.registrations) {
+                    if (registration.courseId == id) {
+                        regStudents.push(this.findStudentById(registration.studentId));
+                    }
+                }
+
+                if (regStudents.length > 0) {
+                    console.log("Danh sách sinh viên đăng ký");
+                    for (let regStudent of regStudents) {
+                        regStudent.showInfo(); 
+                    }
+                } else {
+                    console.log("Không có sinh viên đăng ký môn học này");
+                }
+            }
+
+        }
+
+        traningCenter = new TrainingCenter();
+        traningCenter.addStudent(new Student(1, " Quyet Tran ", 29, "quyettv@topcv.vn"));
+        traningCenter.addStudent(new Student(2, " An Tran", 22, "sadsd@topcv.vn"));
+        traningCenter.addStudent(new Student(3, "Tam Tran", 23, "tam@topcv.vn"));
+        traningCenter.addStudent(new Student(4, "Binh Tran", 20, "binh@topcv.vn"));
+        traningCenter.addStudent(new Student(5, "Chinh Tran", 29, "chinh@topcv.vn"));
+        traningCenter.addStudent(new Student(6, "Dung Tran", 24, "dung@topcv.vn"));
+        traningCenter.addStudent(new Student(7, "Hoa Tran", 28, "hoa@topcv.vn"));
+        traningCenter.addStudent(new Student(8, "Cat Tran", 29, "cat@topcv.vn"));
+
+        traningCenter.addCourse(new Course(1, "Science", 'sci', "Random Instructor", 20, 5000000))
+        traningCenter.addCourse(new Course(2, "Đạo đức", 'dd', "Quyet", 15, 4000000))
+        traningCenter.addCourse(new Course(3, "Toán", 'math', "Tam", 30, 20000000))
+        traningCenter.addCourse(new Course(4, "Sử", 'history', "An", 20, 4000000))
+
+        traningCenter.registerCourse(1, 1, '23/04/2024');
+        traningCenter.registerCourse(2, 1, '23/04/2024');
+        traningCenter.registerCourse(4, 1, '23/04/2024');
+
+        traningCenter.registerCourse(1, 2, '22/04/2024');
+        traningCenter.registerCourse(2, 2, '22/04/2024');
+        traningCenter.registerCourse(3, 2, '22/04/2024');
+        traningCenter.registerCourse(4, 2, '22/04/2024');
+        
+        traningCenter.registerCourse(1, 8, '22/04/2024');
+
+        
+        console.log(traningCenter);
+        traningCenter.showDetailStudent(3);
+        traningCenter.showDetailCourse(1);
+        
+    </script>
+</body>
+</html>

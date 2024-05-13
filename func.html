@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let chia_het_cho_3_va_5 = x => x % 3 == 0 && x % 5 == 0;
+        
+        let check_is_prime = n => {
+            for (let i = 2; i < n; i++ ){
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        let get_valid_array = (n) => {
+            let valid_array = [];
+            let i = 1;
+
+            while(valid_array.length < n) {
+                if (check_is_prime(i)) {
+                    valid_array.push(i);
+                }
+                i++;
+            }
+
+            return valid_array;
+        }
+
+        console.log(get_valid_array(10));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Car {
+            constructor (name, model) {
+                this.name = name;
+                this.model = model;
+            }
+            startEngine () {
+                console.log(`${this.name} Engine start`);
+            }
+
+            checkSystem () {
+                console.log(`${this.name} System check`);
+            }
+
+            getModel () {
+                return this.model;
+            }
+
+            turnOnElectricSystem() {
+                console.log(`${this.name} Turn on electric System`);
+            }
+
+            start () {
+                this.startEngine();
+                this.checkSystem();
+                this.turnOnElectricSystem();
+            }
+        }
+
+        const car1 = new Car("Toyota", "Camry");
+        const car2 = new Car("Mazda", "CX5");
+        car1.start();
+        console.log(car1.getModel());
+        car2.start();
+        console.log(car2.getModel());
+
+
+    </script>
+</body>
+</html>

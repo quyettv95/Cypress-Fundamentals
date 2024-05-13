@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const person = {
+            name: 'Quyet',
+            scores: [10, 8, 9],
+            getAvgScore: function () {
+                let sum = 0;
+                for (let score of this.scores) {
+                    sum += score;
+                }
+
+                return sum / this.scores.length;
+            }
+        }
+
+        console.log(`Avg score of ${person.name} is ${person.getAvgScore()}`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #form {
+            width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ecf0f1;
+        }
+        #form input {
+            border-radius: 5px;
+            border: solid 1px #95a5a6;
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+        #form select {
+            border-radius: 5px;
+            border: solid 1px #95a5a6;
+            display: block;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #form label {
+            margin-bottom: 5px;
+            display: block;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        #form button {
+            background: #27ae60;
+            color: #fff;
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <form action="">
+            <div class="input-group">
+                <label for="">Firstname</label>
+                <input type="text" placeholder="FirstName">
+            </div>
+            <div class="input-group">
+                <label for="">Lastname</label>
+                <input type="text">
+            </div>
+            <div class="input-group">
+                <label for="">Country</label>
+                <select name="" id="">
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </div>
+            <div>
+                <button>Try it yourself >></button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

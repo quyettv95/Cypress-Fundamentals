@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="">
+        <label for="">
+            A
+        </label> <br>
+        <input id="a" type="text"> <br>
+        <label for="">
+            B
+        </label> <br>
+        <input id="b" type="text"> <br>
+        <label for="">
+            C
+        </label> <br>
+        <input id="c" type="text"> <br>
+        <button id="submit">Submit</button>
+        
+        <div id="result"></div>
+    </form>
+    <script>
+
+        class Triangle {
+            constructor(a, b, c) {
+
+                if (a + b < c || a + c < b || b + c < a) {
+                    throw "This is not a triangle";
+                }
+
+                this.a = a;
+                this.b = b;
+                this.c = c;
+            }
+
+            is_tam_giac_can() {
+                if (this.a == this.c || this.a == this.b || this.b == this.c) {
+                    return true;
+                }
+                return false;
+            }
+
+            is_tam_giac_vuong() {
+                if (this.a ** 2 + this.b ** 2 == this.c ** 2) {
+                    return true;
+                }
+                if (this.b ** 2 + this.c ** 2 == this.a ** 2) {
+                    return true;
+                }
+                if (this.c ** 2 + this.a ** 2 == this.b ** 2) {
+                    return true;
+                }
+                return false;
+            }
+
+            is_tam_giac_deu () {
+                if (this.a == this.c && this.a == this.b) {
+                    return true;
+                }
+                return false;
+            }
+
+            is_tam_giac_vuong_can () {
+                return this.is_tam_giac_vuong() && this.is_tam_giac_can();
+            }
+
+            get_name() {
+                if (this.is_tam_giac_deu()) {
+                    return "Tam giác đều";
+                }
+                
+                if (this.is_tam_giac_vuong_can()) {
+                    return "Tam giác vuông cân";
+                }
+                
+                if (this.is_tam_giac_can()) {
+                    return "Tam giác cân";
+                }
+
+                if (this.is_tam_giac_vuong()) {
+                    return "Tam giác vuông";
+                }
+
+                return "Tam giác";
+            }
+        }
+
+        class Process {
+            static run() {
+                // Lấy giá trị a,b,c
+                let a = parseInt(document.getElementById('a').value);
+                let b = parseInt(document.getElementById('b').value);
+                let c = parseInt(document.getElementById('c').value);
+
+                // Khởi tạo triangle
+                let tri = new Triangle(a, b, c);
+                let name = tri.get_name();
+
+                // In ra màn hình
+                let result = document.getElementById('result');
+                result.innerText = name;
+                result.style.color = 'black';
+
+            }
+        }
+
+        let submitButton = document.getElementById('submit');
+        submitButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            try {
+                Process.run();
+            } catch (e) {
+                let result = document.getElementById('result');
+                result.innerText = e;
+                result.style.color = 'red';
+            }
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    
+    <div id="itlearn_form">
+        <form action="">
+
+            <label for="">Username</label>
+            <input id="username" type="text">
+            <p id="username_err" class="error_message">Username is not valid</p>
+            
+            <label for="">Password</label>
+            <input id="password" type="text">
+            <p id="password_err" class="error_message">Password is not valid</p>
+    
+
+            <div id="login_success" class="login_success">
+                Login Success
+            </div>
+
+            <div id="login_fail" class="login_fail">
+                Login Fail
+            </div>
+            <button id="btn_login">Login</button>
+        </form>
+    </div>
+    <script src="./Validator.js"></script>
+</body>
+</html>

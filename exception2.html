@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let validateEmail = (email) => {
+            if (email.length < 10) {
+                throw "Email cần trên 10 ký tự";
+            }
+            if (!email.includes('@')) {
+                throw "Email cần có ký tự @";
+            }
+
+            return true;
+        }
+
+        try {
+            let result = validateEmail('quyettv@topcv.vn');
+            console.log("Truy vấn DB & Kiểm tra đăng nhập");
+        } catch (err) {
+            console.log(err)
+        }
+        
+    </script>
+</body>
+</html>

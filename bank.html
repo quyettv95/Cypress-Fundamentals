@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="hello">Hello World</h1>
+    <img id="img" width="500px" onclick="changeImage()" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS" alt="">
+
+    <script>
+
+        let changeImage = () => {
+            let image = document.getElementById('img');
+            image.src = "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg";
+            image.style.width = "1000px";
+        }
+        console.log(document);
+
+        const heading = document.getElementById('hello');
+
+        if (heading) {
+            //heading.textContent = "This text has changed";
+            heading.innerText = "Hello 2";
+        }
+
+
+
+        class Account {
+            constructor (id, name, phone, email, password, balance) {
+                this.id = id;
+                this.name = name;
+                this.phone = phone;
+                this.email = email;
+                this.password = password;
+                this.balance = balance;
+            }
+
+            getBalance() {
+                return this.balance
+            }
+
+        }
+
+        class Bank {
+            constructor(accounts = []) {
+                this.accounts = accounts;
+            }
+
+            login(username, password) {
+                for (let account of this.accounts) {
+                    if (account.password == password && account.email == username) {
+                        return account;
+                    }
+                }
+
+                throw "LoginFail"
+            }
+
+            addAccount(id, name, phone, email, password, balance) {
+                this.accounts.push(new Account(id, name, phone, email, password, balance));
+            }
+
+            findAccountById(id) {
+                return this.accounts.find((account) => {
+                    return account.id == id;
+                }); 
+            }
+
+            showAccountInfo(id) {
+                let account = this.findAccountById(id);
+                console.log(`Id: ${account.id}`);
+                console.log(`Name: ${account.name}`);
+                console.log(`Phone: ${account.phone}`);
+                console.log(`Email: ${account.email}`);
+                console.log(`Balance: ${account.balance}`);
+            }
+
+            withdraw(id, amount) {
+                let account = this.findAccountById(id);
+                if (amount <= account.getBalance()) {
+                    account.balance -= amount;
+                    return;
+                }
+                throw "Số dư không đủ";
+            }
+
+            deposit(id, amount) {
+                let account = this.findAccountById(id);
+                account.balance += amount;
+            }
+
+            tranfer (fromAccountId, toAccountId, amount) {
+                let fromAccount = this.findAccountById(fromAccountId);
+                console.log(fromAccount);
+                let toAccount = this.findAccountById(toAccountId);
+                console.log(toAccount);
+
+                if (amount <= fromAccount.getBalance()) {
+                    fromAccount.balance -= amount;
+                    toAccount.balance += amount;
+                    return;
+                }
+                //console.log("Số dư không đủ");
+            }
+
+            logout() {
+
+            }
+
+        }
+
+
+        bank = new Bank();
+        bank.addAccount(1, "Quyet", '02929232323', 'quyettv1@topcv.vn', 'admin1@123', 1000000);
+        bank.addAccount(2, "An", '02929233323', 'quyettv2@topcv.vn', 'admin2@123', 2000000);
+        bank.addAccount(3, "Tam", '02929234323', 'quyettv3@topcv.vn', 'admin3@123', 3000000);
+        bank.addAccount(4, "Kei", '02929235323', 'quyettv4@topcv.vn', 'admin4@123', 4000000);
+        bank.addAccount(5, "Ty", '02929236323', 'quyettv5@topcv.vn', 'admin5@123', 5000000);
+        bank.addAccount(6, "Tam", '02929237323', 'quyettv6@topcv.vn', 'admin6@123', 6000000);
+        bank.addAccount(7, "Hoa", '02929238323', 'quyettv7@topcv.vn', 'admin7@123', 7000000);
+        console.log(bank);
+
+        try {
+            let username = "quyettv1@topcv.vn";
+            let password = "admin1@123";
+            let user = bank.login(username, password);
+            bank.showAccountInfo(user.id);
+            bank.withdraw(user.id, 10000000);
+            bank.showAccountInfo(user.id);
+            bank.deposit(user.id, 2000000);
+            bank.showAccountInfo(user.id);
+            bank.tranfer(user.id, 1, 6000000);
+            bank.showAccountInfo(user.id);
+            bank.showAccountInfo(1);
+        } catch (err) {
+            console.log(err);
+        }
+
+
+
+
+        
+    </script>
+</body>
+</html>
